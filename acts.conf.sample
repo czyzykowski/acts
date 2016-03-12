@@ -9,7 +9,11 @@ backuptargets="var etc home root"
 # tarsnap
 # What command to call for 'tarsnap'.
 # Default: tarsnap
-tarsnap="nice -n19 ionice -c3 tarsnap"
+ionice=""
+if type ionice > /dev/null 2>&1 ; then
+    ionice="ionice -c3"
+fi
+tarsnap="nice -n19 $ionice tarsnap"
 
 # tarsnapbackupoptions
 # What options to use when backing up.
