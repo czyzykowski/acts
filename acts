@@ -65,6 +65,9 @@ elif [ -f /etc/acts.conf ] ; then
 elif [ -f /usr/local/etc/acts.conf ] ; then
     . /usr/local/etc/acts.conf
     log_debug "load-config source=/usr/local/etc/acts.conf"
+elif [ -f $HOME/.acts.conf ] ; then
+    . $HOME/.acts.conf
+    log_debug "load-config source=$HOME/.acts.conf"
 else
     die "load-config-error message=\"No $(pwd)/acts.conf, /etc/acts.conf or /usr/local/etc/acts.conf\""
 fi
